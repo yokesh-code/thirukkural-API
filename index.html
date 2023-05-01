@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>promiseTask3</title>
+</head>
+<body>
+    <div id="create">
+    <div>
+        <p class="line1"></p>
+        <p class="line2"></p>
+    </div>
+</div>
+    <script>
+        for(var x=1;x<=2;x++)
+        {
+            let line1=document.querySelectorAll(".line1")
+            let line2=document.querySelectorAll(".line2")
+            let create=document.getElementById("create")
+            fetch(`https://api-thirukkural.vercel.app/api?num=${x}`)
+            .then(response=>response.json())
+            .then(data=>{
+                var arr=Object.entries(data);
+                console.log(arr)
+                for(var i=0;i<=arr.length;i++)
+                {
+                let in1=`<p class="line1">${arr[4][1]}</p>`
+                let in2=`<p class="line2">${arr[5][1]}</p>`
+                line1[0].innerHTML+=in1
+                line2[0].innerHTML+=in2
+            }
+    
+            })
+
+            let createPack=()=>{
+                create.innerHTML+=
+                `<div>
+                    <p class="line1">${arr[4][1]}</p>
+                    <p class="line2">${arr[5][1]}</p>
+                </div>`
+                line1[0].innerHTML+=in1
+                line2[0].innerHTML+=in2
+            }
+        }
+    </script>
+</body>
+</html>
